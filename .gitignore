@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Test reports and Playwright artifacts
+reports/
+test-results/
+playwright-report/
+
+# IDE files
+.vscode/
+.idea/

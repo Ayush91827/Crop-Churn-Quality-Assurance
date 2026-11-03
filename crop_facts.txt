@@ -1,0 +1,11 @@
+Crop: Rice
+Optimal Soil pH: 5.5 to 6.5
+Ideal Temperature: 20°C to 27°C
+Water Requirement: High rainfall, typically above 200 mm.
+Special Fact: Rice grows best in standing water and clayey soils.
+
+Crop: Wheat
+Optimal Soil pH: 6.0 to 7.0
+Ideal Temperature: 15°C to 25°C
+Water Requirement: Moderate rainfall, 75 to 100 mm.
+Special Fact: Wheat is a rabi crop sown in winter and harvested in summer.

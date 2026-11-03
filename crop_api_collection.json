@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "Crop API Regression Suite",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Happy Path - Predict Crop",
+      "event": [
+        {
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Response time is under 500ms', function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(500);",
+              "});",
+              "pm.test('Response contains predicted crop', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('prediction');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"N\": 90,\n    \"P\": 42,\n    \"K\": 43,\n    \"temperature\": 20.8,\n    \"humidity\": 82.0,\n    \"ph\": 6.5,\n    \"rainfall\": 202.9\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "host": ["{{base_url}}"],
+          "path": ["predict"]
+        }
+      }
+    },
+    {
+      "name": "Missing Fields",
+      "event": [
+        {
+          "script": {
+            "exec": [
+              "pm.test('Status code is 400 for missing fields', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "pm.test('Error message present', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('error');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"N\": 90\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "host": ["{{base_url}}"],
+          "path": ["predict"]
+        }
+      }
+    },
+    {
+      "name": "Wrong Data Types",
+      "event": [
+        {
+          "script": {
+            "exec": [
+              "pm.test('Status code is 400 for wrong data types', function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"N\": \"not-a-number\",\n    \"P\": 42,\n    \"K\": 43,\n    \"temperature\": 20.8,\n    \"humidity\": 82.0,\n    \"ph\": 6.5,\n    \"rainfall\": 202.9\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "host": ["{{base_url}}"],
+          "path": ["predict"]
+        }
+      }
+    },
+    {
+      "name": "Empty Body",
+      "event": [
+        {
+          "script": {
+            "exec": [
+              "pm.test('Status code is 400 for empty body', function () {",
+              "    pm.response.to.have.status(400);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "host": ["{{base_url}}"],
+          "path": ["predict"]
+        }
+      }
+    }
+  ]
+}

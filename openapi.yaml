@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Crop Prediction API
+  version: 1.0.0
+  description: Flask API for predicting optimal crops based on soil and weather parameters.
+paths:
+  /predict:
+    post:
+    summary: Predict optimal crop
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - N
+              - P
+              - K
+              - temperature
+              - humidity
+              - ph
+              - rainfall
+            properties:
+              N:
+                type: number
+                example: 90
+              P:
+                type: number
+                example: 42
+              K:
+                type: number
+                example: 43
+              temperature:
+                type: number
+                example: 20.8
+              humidity:
+                type: number
+                example: 82.0
+              ph:
+                type: number
+                example: 6.5
+              rainfall:
+                type: number
+                example: 202.9
+    responses:
+      '200':
+        description: Successful prediction
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prediction:
+                  type: string
+                  example: rice
+      '400':
+        description: Bad request (missing fields or wrong types)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: Invalid input or missing fields

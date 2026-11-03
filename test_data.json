@@ -1,0 +1,62 @@
+{
+  "crop_valid": {
+    "N": 90, "P": 42, "K": 43, "temperature": 20.8, "humidity": 82.0, "ph": 6.5, "rainfall": 202.9
+  },
+  "crop_alternative": {
+    "N": 50, "P": 50, "K": 50, "temperature": 25.0, "humidity": 60.0, "ph": 7.0, "rainfall": 100.0
+  },
+  "crop_out_of_range": {
+    "N": 9999, "P": 42, "K": 43, "temperature": 20.8, "humidity": 82.0, "ph": 6.5, "rainfall": 202.9
+  },
+  "crop_negative": {
+    "N": -10, "P": 42, "K": 43, "temperature": 20.8, "humidity": 82.0, "ph": 6.5, "rainfall": 202.9
+  },
+  "churn_valid": {
+    "age": 30,
+    "gender": "Male",
+    "credit_score": 650,
+    "geography": "France",
+    "tenure": 3,
+    "balance": 50000.0,
+    "number_of_products": 2,
+    "has_credit_card": "Yes",
+    "is_active_member": "Yes",
+    "estimated_salary": 75000.0
+  },
+  "churn_spain": {
+    "age": 45,
+    "gender": "Female",
+    "credit_score": 700,
+    "geography": "Spain",
+    "tenure": 5,
+    "balance": 120000.0,
+    "number_of_products": 1,
+    "has_credit_card": "No",
+    "is_active_member": "Yes",
+    "estimated_salary": 95000.0
+  },
+  "churn_germany": {
+    "age": 28,
+    "gender": "Male",
+    "credit_score": 580,
+    "geography": "Germany",
+    "tenure": 1,
+    "balance": 20000.0,
+    "number_of_products": 3,
+    "has_credit_card": "Yes",
+    "is_active_member": "No",
+    "estimated_salary": 45000.0
+  },
+  "churn_invalid_age": {
+    "age": 150,
+    "gender": "Male",
+    "credit_score": 650,
+    "geography": "France",
+    "tenure": 3,
+    "balance": 50000.0,
+    "number_of_products": 2,
+    "has_credit_card": "Yes",
+    "is_active_member": "Yes",
+    "estimated_salary": 75000.0
+  }
+}
